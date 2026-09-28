@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mi amor...</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(105,35,55,.25), transparent 35%),
+        radial-gradient(circle at 15% 85%, rgba(70,25,45,.18), transparent 30%),
+        #09070a;
+
+    color: #eadfe2;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+
+/* ESTRELLITAS */
+
+.stars,
+.stars::before,
+.stars::after {
+    position: fixed;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(circle, rgba(255,230,238,.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,.45) 0 1px, transparent 1.5px);
+
+    background-size:
+        97px 113px,
+        151px 139px;
+
+    background-position:
+        20px 10px,
+        70px 80px;
+
+    opacity: .28;
+}
+
+.stars::before {
+    transform: translate(43px,31px);
+    opacity: .18;
+}
+
+.stars::after {
+    transform: translate(-31px,65px);
+    opacity: .12;
+}
+
+
+/* CONTENEDOR */
+
+.wrap {
+    width: min(920px, 92vw);
+    margin: auto;
+    padding: 60px 0 80px;
+}
+
+
+/* PORTADA */
+
+.intro {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.rose {
+    font-size: 36px;
+    opacity: .85;
+}
+
+.intro h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px, 13vw, 115px);
+    font-weight: 400;
+
+    margin: 10px 0;
+
+    color: #ead0d8;
+
+    text-shadow:
+        0 0 30px rgba(170,75,105,.25);
+}
+
+.intro p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    opacity: .65;
+
+    margin-bottom: 35px;
+}
+
+
+/* BOTÓN */
+
+.open {
+    border: 1px solid rgba(225,180,194,.42);
+
+    background: rgba(35,20,27,.7);
+
+    color: #eadfe2;
+
+    padding: 13px 28px;
+
+    border-radius: 40px;
+
+    font-family: inherit;
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: .35s;
+
+    backdrop-filter: blur(8px);
+}
+
+.open:hover {
+    transform: translateY(-2px);
+
+    background: rgba(70,32,47,.7);
+
+    box-shadow:
+        0 8px 30px rgba(100,30,60,.2);
+}
+
+
+/* CARTA */
+
+.letter {
+    display: none;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(245,232,218,.97),
+            rgba(229,211,194,.96)
+        );
+
+    color: #3a292c;
+
+    border: 1px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.5),
+        0 0 0 8px rgba(103,43,61,.12);
+
+    border-radius: 5px;
+
+    padding: clamp(30px, 6vw, 72px);
+
+    position: relative;
+}
+
+.letter.show {
+    display: block;
+
+    animation: aparecer 1.2s ease forwards;
+}
+
+@keyframes aparecer {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* BORDE INTERIOR */
+
+.letter::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 1px solid rgba(92,53,58,.16);
+
+    pointer-events: none;
+}
+
+
+/* ADORNOS */
+
+.corner {
+
+    position: absolute;
+
+    font-size: 27px;
+
+    opacity: .45;
+}
+
+.c1 {
+    top: 22px;
+    left: 28px;
+}
+
+.c2 {
+    top: 22px;
+    right: 28px;
+
+    transform: scaleX(-1);
+}
+
+.c3 {
+    bottom: 22px;
+    left: 28px;
+
+    transform: scaleY(-1);
+}
+
+.c4 {
+    bottom: 22px;
+    right: 28px;
+
+    transform: scale(-1);
+}
+
+
+/* TEXTO */
+
+.letter h2 {
+
+    font-family: 'Great Vibes', cursive;
+
+    font-weight: 400;
+
+    font-size: 50px;
+
+    margin: 0 0 28px;
+
+    color: #633542;
+}
+
+.letter p {
+
+    font-size: 20px;
+
+    line-height: 1.72;
+
+    margin: 0 0 23px;
+}
+
+.thanks {
+
+    font-size: 23px !important;
+
+    color: #633542;
+}
+
+.quote {
+
+    padding-left: 22px;
+
+    border-left:
+        1px solid rgba(99,53,66,.35);
+}
+
+
+/* FIRMA */
+
+.signature {
+
+    text-align: right;
+
+    margin-top: 40px;
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 40px;
+
+    color: #633542;
+}
+
+
+/* BOTÓN DE MÚSICA */
+
+.music {
+
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    border-radius: 30px;
+
+    background: rgba(28,15,21,.88);
+
+    border: 1px solid rgba(225,180,194,.3);
+
+    backdrop-filter: blur(10px);
+}
+
+.music a {
+
+    color: #eadfe2;
+
+    text-decoration: none;
+
+    font-size: 15px;
+}
+
+.music button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #eadfe2;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* CELULAR */
+
+@media(max-width:600px) {
+
+    .wrap {
+        padding-top: 25px;
+    }
+
+    .letter p {
+        font-size: 18px;
+        line-height: 1.65;
+    }
+
+    .letter h2 {
+        font-size: 43px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="stars"></div>
+
+
+<main class="wrap">
+
+
+    <!-- PORTADA -->
+
+    <section class="intro" id="intro">
+
+        <div class="rose">❦</div>
+
+        <h1>Mi amor...</h1>
+
+        <p>
+            Hay algo que quiero decirte.
+        </p>
+
+        <button class="open" onclick="abrirCarta()">
+            Abrir mi carta
+        </button>
+
+    </section>
+
+
+
+    <!-- CARTA -->
+
+    <article class="letter" id="letter">
+
+        <span class="corner c1">❦</span>
+        <span class="corner c2">❦</span>
+        <span class="corner c3">❦</span>
+        <span class="corner c4">❦</span>
+
+
+        <h2>
+            Mi amor...
+        </h2>
+
+
+        <p>
+
+            Hay mucho, y a su vez, tan poco que quiero decirte...
+
+            <br><br>
+
+            Y lo primero que me saldría sería:
+
+        </p>
+
+
+        <p class="thanks">
+
+            》Gracias...
+
+        </p>
+
+
+        <p>
+
+            Gracias por ser tan increíble; por tanta paciencia,
+            por tus intenciones, por los gestos tan lindos que tienes.
+
+        </p>
+
+
+        <p>
+
+            Me haces feliz, eso es un hecho; poco a poco,
+            con cada segundo compartido a tu lado me enamoro
+            un poquito más; te metiste muy despacito en mi corazón,
+            abarcando un lugar especial en él...
+
+        </p>
+
+
+        <p>
+
+            Tu presencia es calidez...
+
+            Y de esa calidez viene la calma y la seguridad
+            que me haces sentir; y hasta ahora es algo indescriptible,
+            y lo más cercano que podría decirte sería que es como
+            el calor de una fogata bajo un cielo estrellado,
+            y la gélida noche contrastando;
+
+            o bien, el calor del sol en un día de playa
+            con la brisa acariciándote con ternura la piel...
+
+        </p>
+
+
+        <p class="quote">
+
+            Así de acogedora es tu calidez.
+
+        </p>
+
+
+        <p>
+
+            Voy despacito, poco a poquito, tomando mi tiempo
+            y abusando ligeramente de tu paciencia, pero te prometo
+            que cada pasito es sincero, seguro;
+
+            porque te mereces eso y más, seguridad, sinceridad,
+            confianza, mucho amor y ternura...
+
+        </p>
+
+
+        <p>
+
+            Sé que hay días que pueden parecer que retrocedí
+            —o al menos desde un tercer punto lo llego a ver así—
+
+            pero simplemente asimilo, recuerdo, guardo y repaso
+            cada momento a tu lado,
+
+            como si en un álbum de fotos los guardara,
+
+            y de ello me pierdo un poco de la realidad,
+
+            pero todo sigue presente y perfectamente guardado
+            con cariño.
+
+        </p>
+
+
+        <p>
+
+            Y finalizando...
+
+        </p>
+
+
+        <p>
+
+            Te recuerdo los ojos tan bonitos que tienes,
+            dicen muchas cosas con solo verlos unos segundos,
+
+            y tu risa...
+
+            Es un deleite a mis ojos,
+
+            sonríes hermoso y eso realmente me llena,
+            hace brincar a mi corazón de ternura.
+
+        </p>
+
+
+        <p>
+
+            Si me preguntaras:
+
+            <br>
+
+            <i>
+                "¿Qué es lo que más te gusta de mí?"
+            </i>
+
+            ...
+
+        </p>
+
+
+        <p>
+
+            Tu calidez,
+
+            porque abarca todo lo anterior mencionado,
+
+            y eso abarcará las cosas que —espero—
+            logre describirte en un futuro no muy lejano...
+
+
+
+
+
+	Te amo...
+
+        </p>
+
+
+        <div class="signature">
+
+            Issela ఌ︎.
+
+        </div>
+
+
+    </article>
+
+
+</main>
+
+
+
+<!-- MÚSICA -->
+
+<div class="music">
+
+</div>
+
+<audio id="musica" loop>
+    <source src="OAUD.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function abrirCarta() {
+
+    document.getElementById("intro").style.display = "none";
+
+    const carta = document.getElementById("letter");
+
+    carta.classList.add("show");
+
+    const musica = document.getElementById("musica");
+
+    musica.volume = 0.5;
+
+    musica.play();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}   
+</script>
+
+
+</body>
+</html>
